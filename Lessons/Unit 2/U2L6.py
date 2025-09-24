@@ -3,7 +3,7 @@ def linsearch(arr, val):
     indexes = []
     for i in range(len(arr)):
         if arr[i] == val:
-        indexes.append(i)
+            indexes.append(i)
     if indexes != []:
         print(val, "found at indexes:", indexes)
     else:
