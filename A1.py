@@ -38,7 +38,7 @@ def shift(array, amount):
     return new_array
 
 """
-Function to add two matrices together 
+Function to add two matrices together (must be same size)
 Parameters:
     M1 (list): Matrix to be added
     M2 (list): Second matrix to be added
