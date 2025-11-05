@@ -47,6 +47,9 @@ Variables:
     row (list): Each row of the matrix
 """
 def add_matrix(M1, M2):
+    # Return -1 if the sizes are not the same
+    if len(M1) != len(M2):
+        return -1
     # Stores the final summed matrix
     result = []
     # Loop through each row index
