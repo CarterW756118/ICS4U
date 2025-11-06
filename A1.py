@@ -1,7 +1,7 @@
 """
 Author : Carter Wells
 Student Number : 756118
-Revison date : 22 October 2025
+Revison date : 7 November 2025
 Program : Random Magic Squares
 Description : Generates magic squares based on the size input
 VARIABLE DICTIONARY :
@@ -145,10 +145,10 @@ def is_magic_square(M):
             return False
     
     # Check all columns
-    for j in range(size):
+    for i in range(size):
         col_sum = 0
-        for i in range(size):
-            col_sum += M[i][j]
+        for j in range(size):
+            col_sum += M[j][i]
         # If any column sum does not match, it is not magic
         if col_sum != magic_sum:
             return False
