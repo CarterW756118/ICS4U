@@ -1,6 +1,7 @@
 """
 Author : Carter Wells
 Student Number : 756118
+Course : ICS4U
 Revison date : 7 November 2025
 Program : Random Magic Squares
 Description : Generates magic squares based on the size input
