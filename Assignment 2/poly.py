@@ -6,7 +6,6 @@ Revision Date : 15 December 2025
 Program : Polygon Linked List
 Description : Defines classes to represent points and polygons using
               a circular linked list structure.
-
 VARIABLE DICTIONARY :
     __x : float - X coordinate of a point
     __y : float - Y coordinate of a point
@@ -34,6 +33,8 @@ class point:
     Function to validate that the point has numeric coordinates
     Returns:
         bool: True if x and y are numeric, otherwise False
+    Variables:
+        val : bool - Validation result
     """
     def valid(self):
         val = False
@@ -71,6 +72,9 @@ class Polygon:
     Parameters:
         x (float): X coordinate of the point
         y (float): Y coordinate of the point
+    Variables:
+        new_point : point - New point object to add
+        curr_point : point - Current point in traversal
     """
     def add_point(self, x: float, y: float):
         # Create a new point object
@@ -108,6 +112,10 @@ class Polygon:
     Function to return a string representation of the polygon
     Returns:
         str: List of points connected by arrows
+    Variables:
+        text : str - String being built
+        curr_point : point - Current point in traversal
+        first_point : point - Reference to first point in linked list
     """
     def __str__(self):
         # Handle case where polygon has no vertices/points
