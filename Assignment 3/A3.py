@@ -79,7 +79,6 @@ def get_numeric_interval(interval_str):
         return (None, None)
 
 poly = None
-user_input_poly = None
 input_x1 = None
 input_x2 = None
 
