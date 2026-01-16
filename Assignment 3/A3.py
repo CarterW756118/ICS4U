@@ -2,7 +2,7 @@
 # Class representing a polynomial term
 """
 class Term:
-     """
+    """
     Constructor for the Term class
     Parameters:
         coeff (int/float) : coefficient of the term
@@ -11,7 +11,7 @@ class Term:
     def __init__(self, coeff, expo):
         self.__coeff = coeff
         self.__expo = expo
-    
+
     """
     Checks if the coefficient and exponent are valid types
     Returns:
@@ -170,4 +170,3 @@ print(f"Polynomial: {poly}")
 print(f"--------------------------")
 area = poly.calculate_area(input_x1, input_x2)
 print(f"Area under the interval [{input_x1}, {input_x2}]: {area:.4f}")
-
