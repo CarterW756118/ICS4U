@@ -235,7 +235,7 @@ def get_numeric_interval(interval_str):
         # Return converted floats
         return (float(x1), float(x2))
     # If fails return None, None
-    except (ValueError, AttributeError):
+    except ValueError:
         return (None, None)
 
 
