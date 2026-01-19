@@ -1,0 +1,89 @@
+Term Class:
+
+function constructor(coeff, expo):
+    store coeff in self.__coeff
+    store expo in self.__expo
+
+function is_valid():
+    return true if coeff is int or float and expo is int and expo >= 0
+    otherwise return false
+
+function calculate(x):
+    return coefficient * (x ^ exponent)
+
+function to_string():
+    if coeff is 0 return ""
+    if expo is 0 return coeff as string
+    if expo is 1 return "coeffx"
+    else return "coeffx^expo"
+
+Polynomial Class
+
+function constructor(poly_str):
+    call str_to_list(poly_str) and store in self.__terms
+    self.__order = length of self.__terms - 1
+
+function is_valid():
+    for each term in self.__terms:
+        call term.is_valid()
+        if any term is invalid return false
+    return true
+
+function str_to_list(poly_str):
+    split poly_str by spaces into coefficients
+    create empty list terms_list
+    loop from 0 to length of coefficients - 1:
+        try convert coefficients[i] to int
+        if fail try convert to float
+        if fail then coeff = none
+        exponent = length of coefficients - i - 1
+        create term(coeff, exponent) and add to terms_list
+    return terms_list
+
+function calculate_y(x):
+    result = 0
+    for each term in self.__terms:
+        call term.calculate(x) and add to result
+    return result
+
+function calculate_area(x1, x2):
+    num_rectangles = 1000000
+    width = (x2 - x1) / num_rectangles
+    area = 0
+    loop from 0 to num_rectangles - 1:
+        x_position = x1 + i * width
+        call calculate_y(x_position) to get height
+        area = area + height * width
+    return area
+
+function to_string():
+    result = ""
+    loop from 0 to length of self.__terms - 1:
+        call string function on term and store in term_str
+        if result != "":
+            result = result + " + "
+        result = result + term_str
+    return result
+
+Driver:
+
+function get_numeric_interval(interval_str):
+    try split interval_str into x1 and x2
+    try convert x1 and x2 to float and return them
+    if any conversion fails return none, none
+
+initialize poly, input_x1, input_x2, valid_input
+
+while valid_input is false:
+    ask user for polynomial string
+    ask user for interval string
+    create polynomial object with input string
+    call get_numeric_interval to get x1 and x2
+    if polynomial is valid and interval parsed:
+        valid_input = true
+    else:
+        print "bad input, please try again"
+
+print polynomial by calling poly.__str__()
+call poly.calculate_area(input_x1, input_x2) and store in area
+print area
