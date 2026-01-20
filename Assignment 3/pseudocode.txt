@@ -1,89 +1,98 @@
 Term Class:
 
-function constructor(coeff, expo):
-    store coeff in self.__coeff
-    store expo in self.__expo
+constructor:
+    store coeff inside the term
+    store expo inside the term
 
-function is_valid():
-    return true if coeff is int or float and expo is int and expo >= 0
+is valid:
+    return true if coeff is a number and expo is a whole number that is zero or greater
     otherwise return false
 
-function calculate(x):
-    return coefficient * (x ^ exponent)
+calculate:
+    return coeff multiplied by x raised to expo
 
-function to_string():
-    if coeff is 0 return ""
-    if expo is 0 return coeff as string
-    if expo is 1 return "coeffx"
-    else return "coeffx^expo"
+to string:
+    if coeff is zero return an empty string
+    if expo is zero return coeff as a string
+    if expo is one return coeff followed by "x"
+    otherwise return coeff followed by "x" raised to expo
 
-Polynomial Class
+Polynomial Class:
 
-function constructor(poly_str):
-    call str_to_list(poly_str) and store in self.__terms
-    self.__order = length of self.__terms - 1
+constructor:
+    convert the given string into a list of term objects
+    set the order of the polynomial based on how many terms it contains
 
-function is_valid():
-    for each term in self.__terms:
-        call term.is_valid()
-        if any term is invalid return false
-    return true
+is_valid:
+    for each term in the polynomial:
+        check if the term is valid
+        if any term is not valid return false
+    if all terms are valid return true
 
-function str_to_list(poly_str):
-    split poly_str by spaces into coefficients
-    create empty list terms_list
-    loop from 0 to length of coefficients - 1:
-        try convert coefficients[i] to int
-        if fail try convert to float
-        if fail then coeff = none
-        exponent = length of coefficients - i - 1
-        create term(coeff, exponent) and add to terms_list
-    return terms_list
+string to list:
+    split the polynomial string into separate coefficient values
+    make an empty list to hold term objects
 
-function calculate_y(x):
-    result = 0
-    for each term in self.__terms:
-        call term.calculate(x) and add to result
+    for each coefficient in order:
+        try to convert it as an integer
+        otherwise try to convert it as a decimal number
+        if both fail, mark the coefficient as invalid
+
+        determine the exponent based on its position in the list
+        make a new term with the coefficient and exponent
+        add it to the list
+
+    return the completed list of terms
+
+calculate y:
+    set result to zero
+    for each term in the polynomial:
+        add the term’s calculated value at x to result
     return result
 
-function calculate_area(x1, x2):
-    num_rectangles = 1000000
-    width = (x2 - x1) / num_rectangles
-    area = 0
-    loop from 0 to num_rectangles - 1:
-        x_position = x1 + i * width
-        call calculate_y(x_position) to get height
-        area = area + height * width
-    return area
+calculate area:
+    choose a very large number of rectangles
+    compute the width of each rectangle based on x1 and x2
+    set area to zero
 
-function to_string():
-    result = ""
-    loop from 0 to length of self.__terms - 1:
-        call string function on term and store in term_str
-        if result != "":
-            result = result + " + "
-        result = result + term_str
-    return result
+    for each rectangle:
+        determine the x position at that rectangle
+        calculate the height of the polynomial at that x position
+        add the rectangle’s area (height times width) to the total
+
+    return the total area
+
+to string:
+    start with an empty result string
+    for each term in the polynomial:
+        convert the term to a string
+        if the result is not empty, add a separator like " + "
+        then add the current term’s string
+    return the final string
 
 Driver:
 
-function get_numeric_interval(interval_str):
-    try split interval_str into x1 and x2
-    try convert x1 and x2 to float and return them
-    if any conversion fails return none, none
+get numeric interval:
+    try to split the interval into a starting and ending value
+    try to convert both values into numbers
+    if successful, return both numbers
+    if not, return two invalid values
 
-initialize poly, input_x1, input_x2, valid_input
+initialize the polynomial, interval values, and a valid input boolean
 
-while valid_input is false:
-    ask user for polynomial string
-    ask user for interval string
-    create polynomial object with input string
-    call get_numeric_interval to get x1 and x2
-    if polynomial is valid and interval parsed:
-        valid_input = true
-    else:
-        print "bad input, please try again"
+while the input is not valid:
+    ask the user for a polynomial string
+    ask the user for an interval string
 
-print polynomial by calling poly.__str__()
-call poly.calculate_area(input_x1, input_x2) and store in area
-print area
+    create a polynomial using the user’s input
+    convert the interval string to two numbers
+
+    if the polynomial is valid and the interval was good:
+        mark the input as valid
+    otherwise:
+        tell the user their input was invalid and to try again
+
+
+display the polynomial as a string
+compute the area under the polynomial over the given interval
+display the resulting area
