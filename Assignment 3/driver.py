@@ -71,4 +71,4 @@ print(f"--------------------------")
 # Compute area
 area = poly.calculate_area(input_x1, input_x2)
 # Print interval and result
-print(f"Area under the interval [{input_x1}, {input_x2}]: {area:.4f}")
+print(f"Area under the curve from {input_x1} to {input_x2}: {area:.4f}")
